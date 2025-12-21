@@ -29,6 +29,45 @@ document.querySelector('#close-contact-info').onclick = () =>{
    contactInfo.classList.remove('active');
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+
+  if (!form || !statusEl) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    statusEl.textContent = "Sending...";
+    statusEl.classList.remove("ok", "err");
+
+    try {
+      const formData = new FormData(form);
+
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (res.ok) {
+        form.reset();
+        statusEl.textContent = "Your message has been sent. Thank you!";
+        statusEl.classList.add("ok");
+      } else {
+        statusEl.textContent = "Sorry — something went wrong. Please try again.";
+        statusEl.classList.add("err");
+      }
+    } catch (err) {
+      statusEl.textContent = "Network error — please try again.";
+      statusEl.classList.add("err");
+    }
+  });
+});
+
+
 window.onscroll = () =>{
    navbar.classList.remove('active');
    searchForm.classList.remove('active');
