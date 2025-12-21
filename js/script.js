@@ -118,11 +118,6 @@ var swiper = new Swiper(".blogs-slider", {
    },
 });
 
-<script>
-  // Automatically set the current year in the footer
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
 
 var swiper = new Swiper(".logo-slider", {
    loop:true,

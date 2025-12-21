@@ -331,7 +331,7 @@ section {
   right: 1.5rem;
   cursor: pointer;
   font-size: 4rem;
-  color: var(--black);
+  color: var(--white);
 }
 
 .contact-info #close-contact-info:hover {
