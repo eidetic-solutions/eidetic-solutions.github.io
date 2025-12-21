@@ -1,42 +1,69 @@
+/* --- MENÜ VE NAVBAR İŞLEMLERİ --- */
 let navbar = document.querySelector('.header .navbar');
 let searchForm = document.querySelector('.header .search-form');
 let loginForm = document.querySelector('.header .login-form');
 let contactInfo = document.querySelector('.contact-info');
 
-document.querySelector('#menu-btn').onclick = () =>{
-   navbar.classList.toggle('active');
-   searchForm.classList.remove('active');
-   loginForm.classList.remove('active');
-};
+// Butonlar HTML'de varsa işlem yap, yoksa hata verme
+let menuBtn = document.querySelector('#menu-btn');
+let searchBtn = document.querySelector('#search-btn');
+let loginBtn = document.querySelector('#login-btn');
+let infoBtn = document.querySelector('#info-btn');
+let closeContactBtn = document.querySelector('#close-contact-info');
 
-document.querySelector('#search-btn').onclick = () =>{
-   searchForm.classList.toggle('active');
-   navbar.classList.remove('active');
-   loginForm.classList.remove('active');
-};
-
-document.querySelector('#login-btn').onclick = () =>{
-   loginForm.classList.toggle('active');
-   navbar.classList.remove('active');
-   searchForm.classList.remove('active'); 
-};
-
-document.querySelector('#info-btn').onclick = () =>{
-   contactInfo.classList.add('active');
+if(menuBtn){
+    menuBtn.onclick = () =>{
+        navbar.classList.toggle('active');
+        if(searchForm) searchForm.classList.remove('active');
+        if(loginForm) loginForm.classList.remove('active');
+    };
 }
 
-document.querySelector('#close-contact-info').onclick = () =>{
-   contactInfo.classList.remove('active');
+if(searchBtn){
+    searchBtn.onclick = () =>{
+        searchForm.classList.toggle('active');
+        if(navbar) navbar.classList.remove('active');
+        if(loginForm) loginForm.classList.remove('active');
+    };
 }
 
+if(loginBtn){
+    loginBtn.onclick = () =>{
+        loginForm.classList.toggle('active');
+        if(navbar) navbar.classList.remove('active');
+        if(searchForm) searchForm.classList.remove('active'); 
+    };
+}
+
+if(infoBtn){
+    infoBtn.onclick = () =>{
+        contactInfo.classList.add('active');
+    }
+}
+
+if(closeContactBtn){
+    closeContactBtn.onclick = () =>{
+        contactInfo.classList.remove('active');
+    }
+}
+
+window.onscroll = () =>{
+   if(navbar) navbar.classList.remove('active');
+   if(searchForm) searchForm.classList.remove('active');
+   if(loginForm) loginForm.classList.remove('active');
+   if(contactInfo) contactInfo.classList.remove('active');
+}
+
+/* --- FORM GÖNDERME İŞLEMİ (AJAX - Sayfa Yenilenmeden) --- */
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const statusEl = document.getElementById("formStatus");
 
+  // Eğer form sayfada yoksa hata vermesin diye kontrol
   if (!form || !statusEl) return;
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Sayfanın yenilenmesini/yönlenmesini engeller
 
     statusEl.textContent = "Sending...";
     statusEl.classList.remove("ok", "err");
@@ -67,15 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/* --- SLIDER AYARLARI --- */
 
-window.onscroll = () =>{
-   navbar.classList.remove('active');
-   searchForm.classList.remove('active');
-   loginForm.classList.remove('active');
-   contactInfo.classList.remove('active');
-}
-
-var swiper = new Swiper(".home-slider", {
+var swiperHome = new Swiper(".home-slider", {
    loop:true,
    grabCursor:true,
    navigation: {
@@ -84,7 +105,7 @@ var swiper = new Swiper(".home-slider", {
    },
 });
 
-var swiper = new Swiper(".reviews-slider", {
+var swiperReviews = new Swiper(".reviews-slider", {
    loop:true,
    grabCursor:true,
    spaceBetween: 20,
@@ -101,7 +122,7 @@ var swiper = new Swiper(".reviews-slider", {
    },
 });
 
-var swiper = new Swiper(".blogs-slider", {
+var swiperBlogs = new Swiper(".blogs-slider", {
    loop:true,
    grabCursor:true,
    spaceBetween: 20,
@@ -118,8 +139,7 @@ var swiper = new Swiper(".blogs-slider", {
    },
 });
 
-
-var swiper = new Swiper(".logo-slider", {
+var swiperLogo = new Swiper(".logo-slider", {
    loop:true,
    grabCursor:true,
    spaceBetween: 20,
