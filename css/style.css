@@ -244,17 +244,24 @@ section {
 }
 
 .form-status {
-  margin-top: 1rem;
-  font-size: 1.4rem;
+  margin-top: 2rem;
+  font-size: 2rem;          /* bigger text */
+  font-weight: 600;         /* more emphasis */
+  text-align: left;         /* keep layout stable */
 }
 
 .form-status.ok {
   color: #1b7f2a;
+  background: #eaf6ee;
+  padding: 1.2rem 1.6rem;
+  border-left: 4px solid #1b7f2a;
+  border-radius: 4px;
 }
 
 .form-status.err {
   color: #b00020;
 }
+
 
 .header .login-form .flex label {
   font-size: 1.5rem;
