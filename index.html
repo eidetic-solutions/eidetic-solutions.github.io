@@ -493,21 +493,26 @@
           loading="lazy"
         ></iframe>
 
-        <form action="">
-          <h3>get in touch</h3>
-          <input type="text" placeholder="name" class="box" />
-          <input type="email" placeholder="email" class="box" />
-          <input type="number" placeholder="phone" class="box" />
-          <textarea
-            name=""
-            placeholder="message"
-            class="box"
-            id=""
-            cols="30"
-            rows="10"
-          ></textarea>
-          <input type="submit" value="send message" class="btn" />
-        </form>
+        <form action="https://formspree.io/f/xdanzjon" method="POST">
+  <h3>get in touch</h3>
+
+  <input type="text" name="name" placeholder="name" class="box" required />
+  <input type="email" name="email" placeholder="email" class="box" required />
+  <input type="tel" name="phone" placeholder="phone" class="box" />
+
+  <textarea
+    name="message"
+    placeholder="message"
+    class="box"
+    cols="30"
+    rows="10"
+    required
+  ></textarea>
+
+  <input type="hidden" name="_subject" value="New message from eidetic.uk" />
+
+  <input type="submit" value="send message" class="btn" />
+</form>
       </div>
     </section>
 
