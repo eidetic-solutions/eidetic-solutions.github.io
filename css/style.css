@@ -777,11 +777,11 @@ section {
 }
 
 .contact {
-  background: var(--black);
+  background: var(--light-bg);
 }
 
 .contact .heading {
-  color: var(--white);
+  color: var(--black);
 }
 
 .contact .row {
