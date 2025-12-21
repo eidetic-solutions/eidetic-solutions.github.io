@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 :root {
-  --yellow: #3137fd;
-  --black: #111;
+  --yellow: #0f284d;
+  --black: #0f284d;
   --white: #fff;
   --light-color: #666;
   --light-bg: #eee;
@@ -82,6 +82,12 @@ section {
     top: 50%;
     opacity: 0;
   }
+}
+
+.header .logo img {
+  height: 4rem;
+  width: auto;
+  display: block;
 }
 
 .header {
